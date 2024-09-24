@@ -1,0 +1,25 @@
+問1
+ルートブリッジのスイッチ番号：switch3
+
+問2
+switch1 F0/1:DP
+switch1 F0/2:RP
+
+switch2 F0/1:RP
+switch2 F0/2:BP
+
+switch4 E0/1:DP
+switch4 E0/2:RP
+
+
+理由：ルートパスコストを考えるとswitch1→switch3はコストが100でswitch1→switch2→switch4→switch3はコストが219なのでswitch1のF0/2がRPとわかる。
+同様にして、switch2→switch1→switch3はコストが119、switch2→switch4→switch3はコストが200なのでswitch2のF0/1がRP、
+switch4→switch3はコストが100、switch4→switch2→switch1→switch3はコストが219なのでswitch4のE0/2がRPとわかる。
+これらの理由からswitch2のF0/1（RP）の対向ポートであるswitch1のF0/1はDPである。
+また、switch2とswitch4のブリッジIDを比べるとswitch4のほうがブリッジIDが小さいためswitch4のE0/1がDPとわかる。そしてswitch2のF0/2は役割が
+何も与えられていないポートのためBPとわかる。
+
+switch3 E0/1:DP
+switch3 E0/2:DP
+理由：問１からswitch3がルートブリッジであり、ルートブリッジのすべてのポートは必ずDPになるため。
+
